@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="sekmung: design custom tees, hoodies, caps and tote bags, then track every step. Sign in as a customer or staff (IMS566 concept project).">
+  <meta name="author" content="Muhammad Amar Danial Bin Nazar">
+  <title>sekmung | Custom merch, made to order</title>
+
+  <!-- Bootstrap 5 and Inter font -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="landing">
+
+  <!-- Top bar: brand and live clock -->
+  <header class="top-bar">
+    <a class="top-brand" href="index.html">sekmung</a>
+    <span class="top-tag" id="landingClock"></span>
+  </header>
+
+  <main class="stage">
+
+    <!-- View 1: landing page with two doors -->
+    <section id="viewDoors" class="landing-view">
+      <div class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">Made-to-order merch</p>
+          <h1 class="hero-title">Wear your<br><em>own idea.</em></h1>
+          <p class="hero-sub">Design custom tees, hoodies, caps and tote bags. Pick the colour, add your design, and follow every step until it reaches you.</p>
+          <div class="hero-stats">
+            <div><strong>4</strong><span>products</span></div>
+            <div><strong>5</strong><span>colours</span></div>
+            <div><strong>5</strong><span>steps tracked</span></div>
+          </div>
+        </div>
+        <div class="hero-art" id="heroArt"></div>
+      </div>
+
+      <p class="section-label">Enter the studio</p>
+      <div class="doors">
+        <button type="button" class="door" id="doorCustomer">
+          <svg class="door-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+          <span class="door-label">Customer</span>
+          <span class="door-text">Design, order and track your merch</span>
+          <span class="door-arrow">&rarr;</span>
+        </button>
+        <button type="button" class="door" id="doorStaff">
+          <svg class="door-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+          <span class="door-label">Staff</span>
+          <span class="door-text">Manage orders, stock and sales</span>
+          <span class="door-arrow">&rarr;</span>
+        </button>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <span class="feature-no">01</span>
+          <h2>Pick your product</h2>
+          <p>T-shirts, hoodies, caps and tote bags in five colours.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-no">02</span>
+          <h2>Preview before you order</h2>
+          <p>See your colour and design name on the product, live.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-no">03</span>
+          <h2>Track every step</h2>
+          <p>From pending to delivered, one clear timeline.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- View 2: customer log in, register and forgot password -->
+    <section id="viewCustomer" class="entry-card d-none">
+      <button type="button" class="back-link" data-back>&larr; Back</button>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" data-tab="login">Log in</button>
+        <button type="button" class="auth-tab" data-tab="register">Register</button>
+      </div>
+
+      <div id="customerError" class="alert alert-danger d-none" role="alert"></div>
+      <div id="customerNotice" class="alert alert-success d-none" role="alert"></div>
+
+      <!-- Customer login -->
+      <form id="customerLoginForm" novalidate>
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">Email</label>
+          <input type="email" id="loginEmail" class="form-control" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="mb-4">
+          <div class="d-flex justify-content-between align-items-baseline">
+            <label for="loginPassword" class="form-label">Password</label>
+            <button type="button" class="link-btn" id="forgotLink">Forgot password?</button>
+          </div>
+          <div class="pw-wrap">
+            <input type="password" id="loginPassword" class="form-control" placeholder="Enter password" autocomplete="current-password">
+            <button type="button" class="pw-toggle" data-toggle="loginPassword">Show</button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-light w-100">Log in</button>
+      </form>
+
+      <!-- Customer register -->
+      <form id="registerForm" class="d-none" novalidate>
+        <div class="mb-3">
+          <label for="regName" class="form-label">Full name</label>
+          <input type="text" id="regName" class="form-control" placeholder="Your name" autocomplete="name">
+        </div>
+        <div class="mb-3">
+          <label for="regEmail" class="form-label">Email</label>
+          <input type="email" id="regEmail" class="form-control" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="mb-3">
+          <label for="regPassword" class="form-label">Password</label>
+          <div class="pw-wrap">
+            <input type="password" id="regPassword" class="form-control" placeholder="At least 6 characters" autocomplete="new-password">
+            <button type="button" class="pw-toggle" data-toggle="regPassword">Show</button>
+          </div>
+          <div class="strength"><div class="strength-bar" id="strengthBar"></div></div>
+          <div class="strength-text" id="strengthText"></div>
+        </div>
+        <div class="mb-4">
+          <label for="regConfirm" class="form-label">Confirm password</label>
+          <div class="pw-wrap">
+            <input type="password" id="regConfirm" class="form-control" placeholder="Repeat password" autocomplete="new-password">
+            <button type="button" class="pw-toggle" data-toggle="regConfirm">Show</button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-light w-100">Create account</button>
+      </form>
+
+      <!-- Forgot password: step 1 (email) -->
+      <form id="forgotForm" class="d-none" novalidate>
+        <h2 class="entry-title">Forgot your password?</h2>
+        <p class="text-muted-custom small">Enter the email you registered with and we will send you a 6-digit code.</p>
+        <div class="mb-4">
+          <label for="forgotEmail" class="form-label">Email</label>
+          <input type="email" id="forgotEmail" class="form-control" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <button type="submit" class="btn btn-light w-100 mb-3">Send code</button>
+        <button type="button" class="link-btn" data-to-login>Back to log in</button>
+      </form>
+
+      <!-- Forgot password: step 2 (code and new password) -->
+      <form id="resetForm" class="d-none" novalidate>
+        <h2 class="entry-title">Enter your code</h2>
+        <p class="text-muted-custom small" id="resetInfo"></p>
+        <div class="demo-inbox" id="demoInbox"></div>
+        <div class="mb-3">
+          <label for="resetCode" class="form-label">6-digit code</label>
+          <input type="text" id="resetCode" class="form-control code-input" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="one-time-code">
+        </div>
+        <div class="mb-3">
+          <label for="resetPassword" class="form-label">New password</label>
+          <div class="pw-wrap">
+            <input type="password" id="resetPassword" class="form-control" placeholder="At least 6 characters" autocomplete="new-password">
+            <button type="button" class="pw-toggle" data-toggle="resetPassword">Show</button>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="resetConfirm" class="form-label">Confirm new password</label>
+          <div class="pw-wrap">
+            <input type="password" id="resetConfirm" class="form-control" placeholder="Repeat new password" autocomplete="new-password">
+            <button type="button" class="pw-toggle" data-toggle="resetConfirm">Show</button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-light w-100 mb-3">Reset password</button>
+        <div class="d-flex justify-content-between">
+          <button type="button" class="link-btn" id="resendCode">Send a new code</button>
+          <button type="button" class="link-btn" data-to-login>Back to log in</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- View 3: staff PIN pad -->
+    <section id="viewStaff" class="entry-card d-none">
+      <button type="button" class="back-link" data-back>&larr; Back</button>
+      <h2 class="entry-title">Staff access</h2>
+
+      <div id="staffError" class="alert alert-danger d-none" role="alert"></div>
+
+      <label for="staffUser" class="form-label">Username</label>
+      <input type="text" id="staffUser" class="form-control mb-4" placeholder="Enter username" autocomplete="username">
+
+      <label class="form-label d-block text-center">Enter your 4-digit PIN</label>
+      <div class="pin-dots" id="pinDots"><span></span><span></span><span></span><span></span></div>
+      <div class="keypad" id="keypad"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container">
+      <div class="row gy-2">
+        <div class="col-md-6">
+          <strong>sekmung</strong>
+          <p class="mb-0 text-muted-custom">Custom merchandise order and materials manager.</p>
+        </div>
+        <div class="col-md-6 text-md-end text-muted-custom">
+          <p class="mb-0">&copy; 2026 sekmung admin. Concept project for IMS566.</p>
+          <p class="mb-0">Not an official sekmung system.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/mockup.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
